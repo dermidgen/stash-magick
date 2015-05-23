@@ -14,5 +14,6 @@
   "unused": true,
   "funcscope": true,
   "node": true,
+  "mocha": true,
   "strict": true
 }
