@@ -9,32 +9,32 @@ original.
 
 # Goals
 
- * Provide Common API service
-  * CORS compliance support
-  * Streams wherever possible
-  * Support image uploads
-  * Support image and stash metadata retrieval
-  * Support defined ImagicMagick operations against upload streams
-   * Crop
-   * Flip
-   * Resample
-   * Resize
-   * Rotate
-   * Scale
-  * Support backend utility and "stash" management operations
-  * Take advantage of stream splitting to generate multiple variants in parallel
- * Provide Image Stash Management
-  * Support image storage and retriveal across multiple backend providers
-   * Rackspace
-   * AWS
-   * Google
-   * Local filesystem
-  * Support image versioning and variants
-  * Support defined storage schema(s)
+* Provide Common API service
+    - CORS compliance support
+    - Streams wherever possible
+    - Support image uploads
+    - Support image and stash metadata retrieval
+    - Support defined ImagicMagick operations against upload streams
+       + Crop
+       + Flip
+       + Resample
+       + Resize
+       + Rotate
+       + Scale
+    - Support backend utility and "stash" management operations
+    - Take advantage of stream splitting to generate multiple variants in parallel
+* Provide Image Stash Management
+    - Support image storage and retriveal across multiple backend providers
+     - Rackspace
+     - AWS
+     - Google
+     - Local filesystem
+    - Support image versioning and variants
+    - Support defined storage schema(s)
 
 ## Future considerations
 
- * Security
- * Scaling
-  * ImageMagick workloads - threading?
-  * HTTP sockets
+* Security
+* Scaling
+  - ImageMagick workloads - threading?
+  - HTTP sockets
