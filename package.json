@@ -1,0 +1,41 @@
+{
+  "name": "stash-magick",
+  "description": "ImageMagick filters applied to streams with optional backends to stash images",
+  "version": "0.0.1",
+  "private": false,
+  "dependencies": {
+    "debug": "^2.2.0",
+    "restify": "*",
+    "pkgcloud": "*",
+    "request": "^2.49.0"
+  },
+  "contributors": [
+    {
+      "name": "Danny Graham",
+      "email": "good.midget@gmail.com"
+    }
+  ],
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "nodemon": "^1.3.7"
+  },
+  "scripts": {
+    "test": "mocha test/index",
+    "dev": "DEBUG=stash-magick nodemon -q index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dermidgen/stash-magick.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dermidgen/stash-magick/issues"
+  },
+  "homepage": "https://github.com/dermidgen/stash-magick",
+  "main": "index.js",
+  "keywords": [
+    "streams",
+    "imagemagick"
+  ],
+  "author": "Danny Graham",
+  "license": "MIT"
+}
