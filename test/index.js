@@ -23,6 +23,10 @@ var stashFile = {
   },
 };
 
+if (!fs.existsSync('./test/fixtures')) {
+  fs.mkdirSync('./test/fixtures');
+}
+
 describe('Stash-Magick API', function() {
 
   it('Reports a 404 for / requests', function(done) {
