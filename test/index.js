@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var util = require('util');
 var assert = require('assert');
 var request = require('request');
 
@@ -12,6 +13,9 @@ var stashSrc = 'http://upload.wikimedia.org/wikipedia/commons/9/9f/Cat_public_do
 var stashKey = '2390423490';
 // jscs:enable
 
+var fixtures = {
+  thumbs: require('./fixtures/thumbnail.json'),
+};
 
 var stashFile = {
   image: {
@@ -27,8 +31,7 @@ if (!fs.existsSync('./test/fixtures')) {
   fs.mkdirSync('./test/fixtures');
 }
 
-describe('Stash-Magick API', function() {
-
+describe('Stash-Magick REST Service', function() {
   it('Reports a 404 for / requests', function(done) {
     request(server + '/', function(err, res) {
       assert(res.statusCode === 404);
@@ -49,35 +52,74 @@ describe('Stash-Magick API', function() {
       done();
     });
   });
+});
 
-  it('Can accept an uploaded image to stash', function(done) {
+// describe('Image Upload', function() {
+//   it('Can accept an uploaded image to stash', function(done) {
+//     this.timeout(30000);
+//     if (!fs.existsSync('./test/fixtures/sample.jpg')) {
+//       request(stashSrc, function(err, res) {
+//         assert(res.statusCode === 200);
+//         request.put(server + '/image/', stashFile, function(err, res) {
+//           assert(res.statusCode === 200);
+//           done();
+//         });
+//       })
+//       .pipe(fs.createWriteStream('./test/fixtures/sample.jpg'));
+//     } else {
+//       request.put(server + '/image/', stashFile, function(err, res) {
+//         assert(res.statusCode === 200);
+//         done();
+//       });
+//     }
+//   });
 
-    if (!fs.existsSync('./test/fixtures/sample.jpg')) {
-      this.timeout(30000);
-      request(stashSrc, function(err, res) {
-        assert(res.statusCode === 200);
-        request.put(server + '/image/', stashFile, function(err, res) {
-          console.log(err, res);
-          // assert(res.statusCode === 200);
-          done();
-        });
-      })
-      .pipe(fs.createWriteStream('./test/fixtures/sample.jpg'));
-    } else {
-      request.put(server + '/image/', stashFile, function(err, res) {
-        assert(res.statusCode === 200);
-        done();
-      });
-    }
-  });
+//   it('Can accept an uploaded image to update the stash', function(done) {
+//     this.timeout(30000);
+//     request.put(server + '/image/' + stashKey, stashFile, function(err, res) {
+//       assert(res.statusCode === 200);
+//       done();
+//     });
+//   });
+// });
 
-  it('Can accept an uploaded image to update the stash', function(done) {
+describe('Image Transforms', function() {
+
+  var formData = fixtures.thumbs;
+
+  it('Can create thumbnails from an upload stream', function(done) {
     this.timeout(30000);
-    request.put(server + '/image/' + stashKey, stashFile, function(err, res) {
+    request.put({
+      url: server + '/image/',
+      formData: {
+        transform: JSON.stringify(fixtures.thumbs.transform),
+        attachments: [
+          fs.createReadStream('./test/fixtures/sample.jpg'),
+        ],
+      },
+    }, function(err, res) {
       assert(res.statusCode === 200);
       done();
     });
   });
-
-
+  // it('Can create thumbnails from an upload stream', function(done) {
+  //   this.timeout(30000);
+  //   request({
+  //     method: 'PUT',
+  //     uri: server + '/image/',
+  //     preambleCRLF: true,
+  //     postambleCRLF: true,
+  //     multipart: [
+  //       {
+  //         'content-type': 'application/json',
+  //         body: JSON.stringify(fixtures.thumbs),
+  //       },
+  //       { body: 'I am an attachment' },
+  //       // { body: fs.createReadStream('./test/fixtures/sample.jpg') },
+  //     ],
+  //   }, function(err, res) {
+  //     assert(res.statusCode === 200);
+  //     done();
+  //   });
+  // });
 });

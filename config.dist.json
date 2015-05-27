@@ -2,5 +2,30 @@
 	"provider": "rackspace",
 	"username":"",
 	"apiKey":"",
-	"region": "ORD"
+	"region": "ORD",
+    "stash": {
+        "name": "Photo-Stash-A"
+    },
+    "defaults": {
+        "transform": {
+            "thumbs": {
+                "small": {
+                    "width": 100,
+                    "height": 75,
+                    "crop": true,
+                    "scale": true
+                },
+                "medium": {
+                    "max-width": 300,
+                    "crop": false,
+                    "scale": true
+                },
+                "large": {
+                    "max-width": 500,
+                    "crop": false,
+                    "scale": true
+                }
+            }
+        }
+    }
 }

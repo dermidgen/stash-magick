@@ -1,0 +1,10 @@
+{
+    "transform": {
+        "thumbs": {
+            "small": {
+                "width": 50,
+                "height": 40
+            }
+        }
+    }
+}
