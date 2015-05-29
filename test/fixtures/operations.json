@@ -1,0 +1,14 @@
+{
+    "urls": [
+        "/raw.jpg",
+        "/thumbs/small.jpg",
+        "/thumbs/medium.jpg",
+        "/thumbs/large.jpg",
+        "/thumbs/250x200/custom.jpg",
+        "/thumbs/cropped/250x200/custom.jpg",
+        "/autocrop/1300x1200/custom.jpg",
+        "/resize/1300x1200/custom.jpg",
+        "/fit/1300x1200/custom.jpg",
+        "/scale/50/custom.jpg"
+    ]
+}
