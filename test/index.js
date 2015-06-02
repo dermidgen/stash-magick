@@ -85,7 +85,7 @@ describe('Image Upload', function() {
     }
   });
 
-  it.skip('Can update an image in the stash', function(done) {
+  it('Can update an image in the stash', function(done) {
     this.timeout(30000);
     request.put({
       url: server + '/image/' + stashKey,
@@ -109,11 +109,14 @@ describe('Image Transforms', function() {
 
   var formData = fixtures.thumbs;
 
-  it.skip('Can create thumbnails from an upload stream', function(done) {
+  it('Can create thumbnails from an upload stream', function(done) {
     this.timeout(30000);
     request.put({
       url: server + '/image/',
-      formData: stashFile,
+      formData: {
+        transforms: ['thumbs','raw'],
+        attachments: [fs.createReadStream('./test/fixtures/sample.jpg')],
+      },
     }, function(err, res) {
       assert(res.statusCode === 200);
       done();
