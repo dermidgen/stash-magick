@@ -107,14 +107,12 @@ describe('Image Upload', function() {
 
 describe('Image Transforms', function() {
 
-  var formData = fixtures.thumbs;
-
   it('Can create thumbnails from an upload stream', function(done) {
     this.timeout(30000);
     request.put({
       url: server + '/image/',
       formData: {
-        transforms: ['thumbs','raw'],
+        transforms: ['thumbs', 'raw'],
         attachments: [fs.createReadStream('./test/fixtures/sample.jpg')],
       },
     }, function(err, res) {
