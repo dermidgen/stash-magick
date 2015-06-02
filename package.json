@@ -5,7 +5,6 @@
   "private": false,
   "dependencies": {
     "debug": "^2.2.0",
-    "deep-extend": "^0.4.0",
     "imagemagick-stream": "^2.0.0",
     "multiparty": "^4.1.2",
     "pkgcloud": "*",
@@ -24,9 +23,9 @@
   },
   "scripts": {
     "test": "mocha -r index test/index",
-    "test-watch": "DEBUG=stash-magick mocha --watch -r index test/index",
-    "service": "DEBUG=stash-magick nodemon -q lib/service",
-    "service-test": "DEBUG=stash-magick nodemon -q lib/service -d 0 --exec mocha test/index"
+    "test-watch": "DEBUG=stash-magick* mocha --watch -r index test/index",
+    "service": "DEBUG=stash-magick* nodemon -q lib/service",
+    "service-test": "DEBUG=stash-magick* nodemon -q lib/service -d 0 --exec mocha test/index"
   },
   "repository": {
     "type": "git",
