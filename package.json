@@ -7,7 +7,7 @@
     "debug": "^2.2.0",
     "imagemagick-stream": "^2.0.0",
     "multiparty": "^4.1.2",
-    "pkgcloud": "*",
+    "pkgcloud": "git@github.com:impactmarketingspecialists/pkgcloud.git",
     "request": "^2.49.0",
     "restify": "*"
   },

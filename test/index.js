@@ -94,7 +94,7 @@ describe('Image Upload', function() {
           value:  fs.createReadStream('./test/fixtures/sample.jpg'),
           options: {
             filename: 'sample.jpg',
-            contentType: 'image/jpg',
+            contentType: 'image/jpeg',
           },
         },
       },
